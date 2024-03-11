@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<style>
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #262525;
+}
+.clock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-direction: row;
+    font-size: 100px;
+}
+.time{
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: white;
+}
+#hr{
+    background-color: #f94343;
+}
+#min{
+    background-color: #05d905;
+}
+#sec{
+    background-color: #ebd013;
+}
+.name{
+    font-size: 60px;
+    position: absolute;
+    top: 25px;
+    font-family: monospace;
+}
+.day{
+    position: absolute;
+    bottom: 78px;
+    font-size: 50px;
+    background-color: #424545;
+    width: 1057px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: row;
+    gap: 503px;
+    align-items: center;
+    justify-content: center;
+    color: #cdc7c7;
+}
+#Session{
+    font-size: 50px;
+    color: white;
+}
+</style>
+<body>
+    <div class="name">
+        <span id="Code" style="color: red">Code</span><span style="color: green" id="With">With</span><span style="color: yellow" id="Aryan">Aryan</span>
+        
+    </div>
+    <div class="clock">
+        <div id="hr" class="time">
+            <span id="hours"></span>
+        </div>
+        <span style="color: white">:</span>
+        <div id="min" class="time">
+            <span id="minutes"></span>
+        </div>
+        <span style="color: white">:</span>
+        <div id="sec" class="time">
+            <span style="color: white" id="seconds"></span>
+        </div>
+        <span id="Session"></span>
+    </div>
+    <div class="day">
+        <span id="din"></span><span id="tarik"></span>
+    </div>
+</body>
+<script>
+    setInterval(()=>{
+
+let date= new  Date();
+let hh = date.getHours();
+if(hh<10){
+        hours.innerHTML="0"+hh;
+}    
+
+else if(hh>12){
+    let session="PM";
+    Session.innerHTML=session;
+    hh=hh-12;
+    if(hh<10){
+        hours.innerHTML="0"+hh;
+    } 
+    else{
+        hours.innerHTML=hh;
+    } 
+
+}
+else if(hh<12){
+    session="AM";
+    hours.innerHTML=hh;
+    Session.innerHTML=session;
+}
+else{
+
+    hours.innerHTML=hh;
+}
+// Minutes
+let mm = date.getMinutes();
+if(mm<10){
+    minutes.innerHTML="0"+mm;
+}
+else{
+    minutes.innerHTML=mm;
+}
+let ss = date.getSeconds();
+if(ss<10){
+    seconds.innerHTML="0"+ss;
+}
+else{
+    seconds.innerHTML=ss;
+}
+
+let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+let Day= days[date.getDay()];
+din.innerHTML=Day;
+let month=date.getMonth()+1;
+tarik.innerHTML=date.getDate()+"/"+month+"/"+date.getFullYear();
+
+},1000)
+</script>
+</html>
